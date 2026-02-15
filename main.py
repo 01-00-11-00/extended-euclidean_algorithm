@@ -2,6 +2,9 @@
 # ---------------------------- Functions ------------------------------- #
 
 def extended_euclid_algorithm(a: int, b: int) -> tuple:
+
+    if not isinstance(a, int) or not isinstance(b, int):
+        raise ValueError("Both inputs must be integers.")
    
     x = 0
     y = 1
@@ -46,7 +49,12 @@ if __name__ == "__main__":
     if second_num > first_num:
         first_num, second_num = second_num, first_num 
 
-    result = extended_euclid_algorithm(first_num, second_num)
+    try:
+        result = extended_euclid_algorithm(first_num, second_num)
+    except ValueError as e:
+        print()
+        print(f"Error: {e}")
+        exit(1)
 
     # Return the results
     print()
